@@ -1,4 +1,4 @@
-package reactfx.infra.ioc;
+package reactivefx.infra.ioc;
 
 import javafx.fxml.FXMLLoader;
 
@@ -9,6 +9,6 @@ public class FXModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		this.bind(FXMLLoader.class).toProvider(FXMLLoaderProvider.class);
-		new ViewMatcher().bindTo(this.binder());;
+		new ViewMatcher().bindTo(this.binder());
 	}
 }

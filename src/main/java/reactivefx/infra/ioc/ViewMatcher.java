@@ -1,13 +1,13 @@
-package reactfx.infra.ioc;
+package reactivefx.infra.ioc;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import reactfx.infra.FXView;
-import reactfx.interfaces.View;
-import reactfx.interfaces.ViewBase;
+import reactivefx.infra.FXView;
+import reactivefx.interfaces.View;
+import reactivefx.interfaces.ViewBase;
 
 import com.google.inject.Inject;
 import com.google.inject.ProvisionException;

@@ -1,4 +1,4 @@
-package reactfx.infra;
+package reactivefx.infra;
 
 import org.reflections.Reflections;
 

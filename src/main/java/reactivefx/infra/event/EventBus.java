@@ -1,4 +1,4 @@
-package reactfx.infra.event;
+package reactivefx.infra.event;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package reactfx.infra.ioc;
+package reactivefx.infra.ioc;
 
 import com.google.inject.Binder;
 import com.google.inject.TypeLiteral;

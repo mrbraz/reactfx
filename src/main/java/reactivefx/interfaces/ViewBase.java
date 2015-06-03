@@ -1,4 +1,4 @@
-package reactfx.interfaces;
+package reactivefx.interfaces;
 
 import javafx.scene.Parent;
 
@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 public abstract class ViewBase {
   private Parent root;
 
-  Parent getRoot() {
+  public Parent getRoot() {
     return root;
   }
 
@@ -18,7 +18,7 @@ public abstract class ViewBase {
     this.root = root;
   }
   
-  protected void attach(){}
+  public void attach(){}
   
-  protected void detach(){}
+  public void detach(){}
 }

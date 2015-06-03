@@ -1,4 +1,4 @@
-package reactfx.interfaces;
+package reactivefx.interfaces;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -22,11 +22,11 @@ public class ViewPane extends StackPane {
     return ViewPane.instance;
   }
   
-  public <V extends ViewBase> void go(Presenter<V> presenter){
+  public <V extends View> void go(Presenter<V> presenter){
     presenter.go(this);
   }
   
-  void load(ViewBase view){
+  void load(View view){
     final DoubleProperty opacity = this.opacityProperty();
 
     if (this.getChildren().isEmpty()) {
@@ -36,6 +36,7 @@ public class ViewPane extends StackPane {
           new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
           new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));
       fadeIn.play();
+      view.attach();
       return;
     }
     
@@ -44,12 +45,13 @@ public class ViewPane extends StackPane {
         new KeyFrame(new Duration(2000), new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent t) {
-            getChildren().remove(0);
-            getChildren().add(0, view.getRoot());
+            getChildren().clear();
+            getChildren().add(view.getRoot());
             Timeline fadeIn = new Timeline(
               new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
               new KeyFrame(new Duration(2000), new KeyValue(opacity, 1.0)));
             fadeIn.play();
+            view.attach();
           }
         }, new KeyValue(opacity, 0.0)));
     fade.play();

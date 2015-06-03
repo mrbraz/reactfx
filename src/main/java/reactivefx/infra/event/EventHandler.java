@@ -1,4 +1,4 @@
-package reactfx.infra.event;
+package reactivefx.infra.event;
 
 public abstract class EventHandler<T> {
 

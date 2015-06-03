@@ -1,4 +1,4 @@
-package reactfx.infra.ioc;
+package reactivefx.infra.ioc;
 
 import java.util.ResourceBundle;
 

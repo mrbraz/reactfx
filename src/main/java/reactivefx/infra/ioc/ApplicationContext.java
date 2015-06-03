@@ -1,4 +1,4 @@
-package reactfx.infra.ioc;
+package reactivefx.infra.ioc;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

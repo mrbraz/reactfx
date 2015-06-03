@@ -1,6 +1,6 @@
-package reactfx.interfaces;
+package reactivefx.interfaces;
 
-public abstract class Presenter<V extends ViewBase> {
+public abstract class Presenter<V extends View> {
 
     private V view;
     

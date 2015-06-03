@@ -1,6 +1,6 @@
-package reactfx.infra.event;
+package reactivefx.infra.event;
 
-import reactfx.infra.event.EventBus.EventType;
+import reactivefx.infra.event.EventBus.EventType;
 
 public class Event<T> {
 
