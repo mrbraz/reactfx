@@ -4,17 +4,17 @@ public abstract class Presenter<V extends View> {
 
     private V view;
     
-    protected Presenter(V view) {
+    protected void set(V view){
       this.view = view;
     }
-
+    
     public V view(){
       return this.view;
     }
 
-    public final void go(ViewPane pane){
+    public final void go(ViewLoader loader){
       this.bind();
-      pane.load(this.view);
+      loader.load(this.view);
     }
     
     final void detach(){

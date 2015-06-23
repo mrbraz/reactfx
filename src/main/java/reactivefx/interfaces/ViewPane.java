@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class ViewPane extends StackPane {
+public class ViewPane extends StackPane implements ViewLoader {
   private static final ViewPane instance = new ViewPane();
 
   private ViewPane() {}
@@ -26,7 +26,7 @@ public class ViewPane extends StackPane {
     presenter.go(this);
   }
   
-  void load(View view){
+  public void load(View view){
     final DoubleProperty opacity = this.opacityProperty();
 
     if (this.getChildren().isEmpty()) {

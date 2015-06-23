@@ -7,41 +7,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import reactivefx.infra.FXView;
 import reactivefx.interfaces.View;
-import reactivefx.interfaces.ViewBase;
 
 import com.google.inject.Inject;
 import com.google.inject.ProvisionException;
 import com.google.inject.TypeLiteral;
 
-class ViewMatcher extends Listener<Object> {
+class ViewMatcher extends Listener<View> {
 
 	public boolean matches(TypeLiteral<?> type) {
 		return type.getRawType().isAnnotationPresent(FXView.class);
 	}
 	
 	@Override
-	protected Class<? extends PostInjection<Object>> observer() {
+	protected Class<? extends PostInjection<View>> observer() {
 		return ViewPostInjection.class;
 	}
 	
-	static class ViewPostInjection implements PostInjection<Object> {
+	static class ViewPostInjection implements PostInjection<View> {
 		@Inject
 		private FXMLLoader loader;
 		
-		public void visit(Object instance) {
-			Class<?> clazz = instance.getClass();
-			String fxmlFilePath = "/" + this.toFileNotation(clazz.getName()) + ".fxml";
-			InputStream input = clazz.getResourceAsStream(fxmlFilePath);
-			
-			if(!(instance instanceof ViewBase)){
-			  throw new ProvisionException("Your View must derive " + ViewBase.class.toString());
-			}
-			
-			this.loader.setController(instance);
-			
+		public void visit(View view) {
 			try {
-        ((View)instance).setRoot((Parent) this.loader.load(input));
-      } catch (IOException e) {
+			  Class<?> clazz = view.getClass();
+			  String fxmlFilePath = "/" + this.toFileNotation(clazz.getName()) + ".fxml";
+			  InputStream input = clazz.getResourceAsStream(fxmlFilePath);
+			  
+			  this.loader.setController(view);
+        view.setRoot((Parent) this.loader.load(input));
+			} catch (IOException e) {
         throw new ProvisionException("An internal error has been occurred.", e);
       }
 		}
